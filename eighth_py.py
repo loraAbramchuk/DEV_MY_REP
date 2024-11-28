@@ -66,10 +66,12 @@ def calc(a, b, operation):
         return int(a) * int(b)
     elif operation == "4":
         return int(a) / int(b)
+    else:
+        raise ValueError("Некорректная операция")
 
 try:
-    a = input("Введите первое число: ")
-    b = input("Введите второе число: ")
+    a = float(input("Введите первое число: "))
+    b = float(input("Введите второе число: "))
     c = input("Выберите операцию : 1 - сложение, 2 - вычитание, 3 - умножение, 4 - деление ")
 
     if b == 0 and c == "4":

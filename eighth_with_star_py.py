@@ -29,3 +29,52 @@
 Добавьте проверку, что файл не пустой, и выводите сообщение, если он пустой: "Файл пуст."
 Убедитесь, что программа корректно игнорирует пустые строки в файле.
 """
+from docx import Document
+
+def open_file():
+    while True:
+        try:
+            file_name = input("Введите имя файла: ")
+
+            with open(file_name, 'r', encoding='utf-8') as file:
+                 # lines = file.readlines()
+                doc = Document(file_name)
+
+                lines = [p.text for p in doc.paragraphs if p.text.strip()]
+
+            if not lines:
+                raise ValueError("Файл пустой")
+
+
+            sum_lines = len(lines)
+
+            words = [word for line in lines if line.strip() for word in line.split()]
+            sum_words = len(words)
+
+            if sum_words == 0:
+                raise ValueError("В файле нет слов.")
+
+            middle_length_word = sum(len(word) for word in words) / sum_words
+
+            print(f"Количество строк: {sum_lines}")
+            print(f"Количество слов: {sum_words}")
+            print(f"Средняя длинна слова: {middle_length_word}")
+            print(f"Список слов: {', '.join(words)}")
+            break
+
+        except FileNotFoundError:
+            print("Файл не найден")
+
+        except ValueError as e:
+            print(f"Ошибка: {e}")
+
+        except Exception as e:
+            print(f"Произошла непредвиденная ошибка: {e}")
+
+        finally:
+            print("Попробуйте снова")
+    print("Программа завершена")
+
+
+
+open_file()

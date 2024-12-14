@@ -1,0 +1,18 @@
+[
+    {
+        "id_book": 1,
+        "title": "Гарри Поттер",
+        "author": "Дж. К. Роулинг",
+        "year": 1997,
+        "is_available": true,
+        "who_took": null
+    },
+    {
+        "id_book": 3,
+        "title": "Мастер и Маргарита",
+        "author": "М. Булгаков",
+        "year": 1967,
+        "is_available": true,
+        "who_took": null
+    }
+]
